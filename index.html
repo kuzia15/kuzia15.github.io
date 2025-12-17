@@ -2,39 +2,152 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="kuzia, kuzia15, site kuzia15">
 <title>Hello, World! I`m kuzia15</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Share+Tech+Mono&display=swap');
 
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-  html {
-    scroll-behavior: smooth;
-    background: #0a001f;
-    color: #eee;
-    font-family: 'Share Tech Mono', monospace;
-  }
-<a href="https://browser.yandex.ru/download?partner_id=831050&banerid=1314219622" target="_blank">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Share+Tech+Mono&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #0a001f;
+  color: #eee;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: radial-gradient(ellipse at center, #150031 0%, #0a001f 80%);
+  overflow-x: hidden;
+}
+
+.banner-pc,
+.banner-mobile {
+  width: 500px;
+  max-width: 100%;
+  margin: 30px auto;
+  display: block;
+}
+
+.banner-mobile {
+  display: none;
+}
+
+@media (max-width: 650px) {
+  .banner-pc { display: none; }
+  .banner-mobile { display: block; }
+}
+
+.lang-switcher {
+  align-self: flex-end;
+  margin-bottom: 15px;
+}
+
+.lang-switcher button {
+  background: none;
+  border: 1.5px solid #ff00a8;
+  color: #ff00a8;
+  padding: 6px 12px;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 30px;
+  margin-left: 10px;
+}
+
+.lang-switcher button.active,
+.lang-switcher button:hover {
+  background: #ff00a8;
+  color: #0a001f;
+}
+
+header {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  color: #ff00a8;
+  margin-bottom: 20px;
+  letter-spacing: 0.15em;
+  user-select: none;
+  position: relative;
+}
+
+header::before,
+header::after {
+  content: 'kuzia15';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #ff00a8;
+  clip-path: polygon(0 0,100% 0,100% 45%,0 45%);
+  animation: glitchTop 2s infinite linear alternate-reverse;
+}
+
+header::after {
+  clip-path: polygon(0 55%,100% 55%,100% 100%,0 100%);
+  color: #00ffe7;
+  animation: glitchBottom 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitchTop {
+  0% {transform:translate(0)}
+  50% {transform:translate(-3px,2px)}
+  100% {transform:translate(0)}
+}
+
+@keyframes glitchBottom {
+  0% {transform:translate(0)}
+  50% {transform:translate(3px,-2px)}
+  100% {transform:translate(0)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="lang-switcher">
+  <button id="lang-en-btn" class="active">EN</button>
+  <button id="lang-ru-btn">RU</button>
+</div>
+
+<header>kuzia15</header>
+
+<a href="https://browser.yandex.ru/download?partner_id=831050&banerid=1314219622" target="_blank" rel="noopener">
+  <img src="banner-mobile.png" class="banner-pc" alt="Yandex Browser">
+</a>
+
+<a href="https://browser.yandex.ru/download?partner_id=831050&banerid=1314219622" target="_blank" rel="noopener">
   <img src="banner-mobile.png" class="banner-mobile" alt="Yandex Browser">
 </a>
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    background:
-      radial-gradient(ellipse at center, #150031 0%, #0a001f 80%);
-    overflow-x: hidden;
-  }
-  .lang-switcher {
-    align-self: flex-end;
-    margin-bottom: 15px;
-  }
-  .lang-switcher button {
-    background: none;
+
+<script>
+const btnEn = document.getElementById('lang-en-btn');
+const btnRu = document.getElementById('lang-ru-btn');
+
+btnEn.onclick = () => {
+  btnEn.classList.add('active');
+  btnRu.classList.remove('active');
+};
+
+btnRu.onclick = () => {
+  btnRu.classList.add('active');
+  btnEn.classList.remove('active');
+};
+</script>
+
+</body>
+</html>    background: none;
     border: 1.5px solid #ff00a8;
     color: #ff00a8;
     padding: 6px 12px;
